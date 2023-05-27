@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Shadow's Quest</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: #46425e;
+            }
+        </style>
+
+        <script src="/libs/pixi.min.js"></script>
+        <script src="/libs/traviso.min.js"></script>
+    </head>
+    <body>
+        <script>
+            // Initialize pixi application
+            let pixiRoot = new PIXI.Application({
+                width: window.innerWidth,
+                height: window.innerHeight,
+                backgroundColor: 0x46425e
+            });
+
+            // Add the renderer view element to the DOM
+            document.body.appendChild(pixiRoot.view);
+
+            // Create Traviso.js instance and add on top of pixel
+            let instanceConfig = {
+                mapDataPath: "../assets/mapData.json",
+                assetsToLoad: [
+                    "../assets/assets_map.json",
+                    "../assets/assets_characters.json"
+                ]
+            };
+
+            let engine = TRAVISO.getEngineInstance(instanceConfig);
+            pixiRoot.stage.addChild(engine);
+        </script>
+    </body>
+</html>
